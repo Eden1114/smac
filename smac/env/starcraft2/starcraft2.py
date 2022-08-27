@@ -203,7 +203,7 @@ class StarCraft2Env(MultiAgentEnv):
         # Map arguments
         from .default_args import default_args
         args = default_args()
-        # self.map_name = args.map_name
+        self.map_name = map_name
         self.add_local_obs = args.add_local_obs
         self.add_move_state = args.add_move_state
         self.add_visible_state = args.add_visible_state
@@ -332,7 +332,7 @@ class StarCraft2Env(MultiAgentEnv):
         """Launch the StarCraft II game."""
         self._run_config = run_configs.get(version=self.game_version)
         _map = maps.get(self.map_name)
-        self._seed += 1
+        # self._seed += 1
 
         # Setting up the interface
         interface_options = sc_pb.InterfaceOptions(raw=True, score=False)
@@ -2179,6 +2179,6 @@ class StarCraft2Env(MultiAgentEnv):
 
     def get_env_info(self):
         env_info = super().get_env_info()
-        env_info["agent_features"] = self.ally_state_attr_names
-        env_info["enemy_features"] = self.enemy_state_attr_names
+        # env_info["agent_features"] = self.ally_state_attr_names
+        # env_info["enemy_features"] = self.enemy_state_attr_names
         return env_info

@@ -14,9 +14,7 @@ class default_args(object):
     use_mustalive = True
     add_center_xy = True
     use_stacked_frames = False
+    use_obs_instead_of_state = False
     stacked_frames = False
-    
-    def __init__(self, **kwargs):
-        __dict__.update(kwargs)
-        
+
     
