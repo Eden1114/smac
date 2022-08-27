@@ -67,7 +67,8 @@ class StarCraft2Env(MultiAgentEnv):
 
     def __init__(
         self,
-        args,
+        # args,
+        map_name,
         step_mul=8,
         move_amount=2,
         difficulty="7",
@@ -200,7 +201,9 @@ class StarCraft2Env(MultiAgentEnv):
             debugging purposes (default is False).
         """
         # Map arguments
-        self.map_name = args.map_name
+        from .default_args import default_args
+        args = default_args()
+        # self.map_name = args.map_name
         self.add_local_obs = args.add_local_obs
         self.add_move_state = args.add_move_state
         self.add_visible_state = args.add_visible_state
@@ -594,7 +597,7 @@ class StarCraft2Env(MultiAgentEnv):
             terminated = True
             self.bad_transition = True
             if self.continuing_episode:
-                info["episode_limit"] = True
+                infos["episode_limit"] = True
             self.battles_game += 1
             self.timeouts += 1
 
